@@ -3,115 +3,229 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UnitedX Agency</title>
+
+  <title>UnitedX Agency | Creator Support & Growth</title>
 
   <style>
+    :root {
+      --bg-dark: #050713;
+      --bg-purple: #160829;
+      --blue: #4da3ff;
+      --purple: #bc5cff;
+      --pink: #ff6bd6;
+      --white: #ffffff;
+      --soft-white: #d9d9ea;
+      --muted: #aaaabd;
+      --glass: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.16);
+      --shadow: 0 0 35px rgba(132, 92, 255, 0.38);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #070914;
-      color: #ffffff;
+      background: var(--bg-dark);
+      color: var(--white);
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 45px 45px;
+      pointer-events: none;
+      z-index: -3;
     }
 
     .page {
       min-height: 100vh;
-      background:
-        radial-gradient(circle at top right, rgba(179, 80, 255, 0.35), transparent 35%),
-        radial-gradient(circle at bottom left, rgba(63, 156, 255, 0.35), transparent 35%),
-        linear-gradient(135deg, #050713, #101027 50%, #180b2c);
+      position: relative;
       overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(77, 163, 255, 0.32), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(188, 92, 255, 0.35), transparent 32%),
+        radial-gradient(circle at 50% 90%, rgba(255, 107, 214, 0.20), transparent 35%),
+        linear-gradient(135deg, #050713, #101027 45%, #180b2c);
+    }
+
+    .blob {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(45px);
+      opacity: 0.42;
+      z-index: 0;
+      animation: floatBlob 10s ease-in-out infinite alternate;
+    }
+
+    .blob-one {
+      background: var(--blue);
+      top: 12%;
+      left: -140px;
+    }
+
+    .blob-two {
+      background: var(--purple);
+      bottom: -120px;
+      right: -120px;
+      animation-delay: 2s;
+    }
+
+    .blob-three {
+      background: var(--pink);
+      top: 42%;
+      right: 16%;
+      width: 220px;
+      height: 220px;
+      opacity: 0.28;
+      animation-delay: 4s;
+    }
+
+    @keyframes floatBlob {
+      from {
+        transform: translateY(0) scale(1);
+      }
+      to {
+        transform: translateY(-35px) scale(1.08);
+      }
     }
 
     header {
       width: 100%;
-      padding: 25px 8%;
+      padding: 24px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: relative;
-      z-index: 10;
+      z-index: 20;
+    }
+
+    .nav-wrap {
+      padding: 10px 14px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--white);
     }
 
     .brand img {
-      width: 55px;
-      height: 55px;
+      width: 58px;
+      height: 58px;
       object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(150, 100, 255, 0.4);
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(188, 92, 255, 0.55);
     }
 
     .brand h1 {
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       letter-spacing: 1px;
     }
 
+    .brand span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: normal;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
     nav a {
-      color: #ffffff;
+      color: var(--white);
       text-decoration: none;
-      margin-left: 25px;
+      margin-left: 22px;
       font-size: 0.95rem;
-      opacity: 0.85;
+      opacity: 0.84;
       transition: 0.3s;
+    }
+
+    nav a:first-child {
+      margin-left: 0;
     }
 
     nav a:hover {
       opacity: 1;
       color: #9fd7ff;
+      text-shadow: 0 0 14px rgba(159, 215, 255, 0.8);
     }
 
     .hero {
-      min-height: calc(100vh - 100px);
+      min-height: calc(100vh - 110px);
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.08fr 0.92fr;
       align-items: center;
-      gap: 40px;
-      padding: 60px 8%;
-      position: relative;
-    }
-
-    .hero-content {
-      max-width: 650px;
+      gap: 50px;
+      padding: 60px 8% 90px;
       position: relative;
       z-index: 5;
     }
 
+    .hero-content {
+      max-width: 720px;
+    }
+
     .tagline {
-      display: inline-block;
-      padding: 8px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 17px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 999px;
       background: rgba(255, 255, 255, 0.08);
-      color: #b9dcff;
-      margin-bottom: 25px;
-      font-size: 0.9rem;
+      color: #c7e6ff;
+      margin-bottom: 24px;
+      font-size: 0.92rem;
+      box-shadow: 0 0 25px rgba(77, 163, 255, 0.16);
+    }
+
+    .tagline::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--pink));
+      box-shadow: 0 0 15px rgba(255, 107, 214, 0.95);
     }
 
     .hero h2 {
-      font-size: clamp(2.6rem, 6vw, 5.5rem);
-      line-height: 1;
-      margin-bottom: 25px;
-      background: linear-gradient(90deg, #ffffff, #9fd7ff, #d7a7ff);
+      font-size: clamp(3rem, 7vw, 6.7rem);
+      line-height: 0.95;
+      margin-bottom: 26px;
+      letter-spacing: -3px;
+      background: linear-gradient(90deg, #ffffff, #9fd7ff, #d7a7ff, #ffb7ef);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 22px rgba(188, 92, 255, 0.25));
     }
 
     .hero p {
-      font-size: 1.1rem;
-      color: #d8d8e8;
-      margin-bottom: 30px;
-      max-width: 560px;
+      font-size: 1.13rem;
+      color: var(--soft-white);
+      margin-bottom: 32px;
+      max-width: 620px;
     }
 
     .buttons {
@@ -123,162 +237,436 @@
     .btn {
       display: inline-block;
       padding: 14px 24px;
-      border-radius: 12px;
+      border-radius: 14px;
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s ease;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #4da3ff, #bc5cff);
-      color: #ffffff;
-      box-shadow: 0 0 25px rgba(132, 92, 255, 0.45);
+      background: linear-gradient(135deg, var(--blue), var(--purple), var(--pink));
+      color: var(--white);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.18);
     }
 
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 35px rgba(132, 92, 255, 0.65);
+      transform: translateY(-4px);
+      box-shadow: 0 0 45px rgba(255, 107, 214, 0.45);
     }
 
     .btn-secondary {
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-4px);
     }
 
-    .hero-logo {
+    .hero-visual {
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
-      z-index: 4;
     }
 
     .logo-card {
-      width: min(420px, 90%);
+      width: min(430px, 92%);
       padding: 18px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      box-shadow: 0 0 60px rgba(108, 104, 255, 0.35);
-      backdrop-filter: blur(12px);
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      border: 1px solid var(--glass-border);
+      box-shadow:
+        0 0 60px rgba(108, 104, 255, 0.35),
+        inset 0 0 35px rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(14px);
+      position: relative;
+      animation: cardFloat 5s ease-in-out infinite alternate;
+    }
+
+    .logo-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 36px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--blue), var(--purple), var(--pink));
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    @keyframes cardFloat {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-18px);
+      }
     }
 
     .logo-card img {
       width: 100%;
       display: block;
-      border-radius: 20px;
+      border-radius: 24px;
+    }
+
+    .floating-note {
+      position: absolute;
+      padding: 13px 16px;
+      border-radius: 18px;
+      background: rgba(5, 7, 19, 0.74);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.32);
+      color: var(--soft-white);
+      font-size: 0.9rem;
+    }
+
+    .note-one {
+      top: 6%;
+      left: 0;
+    }
+
+    .note-two {
+      bottom: 8%;
+      right: 0;
+    }
+
+    .note-three {
+      bottom: 24%;
+      left: -20px;
+    }
+
+    .marquee {
+      overflow: hidden;
+      border-block: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(12px);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: scrollText 22s linear infinite;
+    }
+
+    .marquee span {
+      display: inline-block;
+      padding: 18px 28px;
+      color: #dfefff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    @keyframes scrollText {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
     }
 
     section {
-      padding: 80px 8%;
+      padding: 85px 8%;
+      position: relative;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 45px;
+      margin-bottom: 46px;
     }
 
     .section-title h3 {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 12px;
+      letter-spacing: -1px;
     }
 
     .section-title p {
-      color: #cfcfe6;
-      max-width: 650px;
+      color: var(--soft-white);
+      max-width: 720px;
       margin: auto;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
+    .highlight {
+      background: linear-gradient(90deg, #9fd7ff, #d7a7ff, #ffb7ef);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .card {
-      padding: 30px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
-      transition: 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(159, 215, 255, 0.55);
-    }
-
-    .card h4 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      color: #ffffff;
-    }
-
-    .card p {
-      color: #d6d6e8;
-      font-size: 0.98rem;
-    }
-
-    .about {
-      background: rgba(255, 255, 255, 0.035);
+    .about-preview {
+      background:
+        radial-gradient(circle at 20% 10%, rgba(77, 163, 255, 0.14), transparent 30%),
+        rgba(255, 255, 255, 0.025);
     }
 
     .about-box {
-      max-width: 950px;
+      max-width: 1000px;
       margin: auto;
       text-align: center;
-      padding: 45px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(77, 163, 255, 0.12), rgba(188, 92, 255, 0.12));
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 50px;
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, rgba(77, 163, 255, 0.14), rgba(188, 92, 255, 0.14)),
+        rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 0 55px rgba(0, 0, 0, 0.24);
     }
 
     .about-box h3 {
-      font-size: 2rem;
+      font-size: clamp(2rem, 4vw, 3rem);
       margin-bottom: 18px;
     }
 
     .about-box p {
-      color: #dedeee;
-      margin-bottom: 15px;
+      color: var(--soft-white);
+      margin-bottom: 28px;
+      font-size: 1.05rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .cards-three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      padding: 30px;
+      border-radius: 26px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.18);
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: rgba(188, 92, 255, 0.22);
+      filter: blur(15px);
+      opacity: 0;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(159, 215, 255, 0.55);
+      box-shadow: 0 0 42px rgba(77, 163, 255, 0.18);
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(77, 163, 255, 0.28), rgba(188, 92, 255, 0.28));
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 1.45rem;
+    }
+
+    .card h4 {
+      font-size: 1.28rem;
+      margin-bottom: 12px;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+    }
+
+    .card p {
+      color: var(--soft-white);
+      font-size: 0.98rem;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card a {
+      color: #9fd7ff;
+      font-weight: bold;
+      text-decoration: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card a:hover {
+      color: #ffb7ef;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .step {
+      counter-increment: step;
+      padding: 32px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+    }
+
+    .step::before {
+      content: "0" counter(step);
+      display: inline-block;
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+      color: #c7e6ff;
+      background: rgba(77, 163, 255, 0.14);
+      border: 1px solid rgba(77, 163, 255, 0.28);
+      padding: 7px 12px;
+      border-radius: 999px;
+    }
+
+    .step h4 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      color: var(--soft-white);
     }
 
     .cta {
       text-align: center;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(188, 92, 255, 0.22), transparent 36%),
+        linear-gradient(135deg, rgba(77, 163, 255, 0.08), rgba(255, 107, 214, 0.07));
+    }
+
+    .cta-box {
+      max-width: 900px;
+      margin: auto;
+      padding: 55px 35px;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 0 60px rgba(188, 92, 255, 0.16);
     }
 
     .cta h3 {
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 4vw, 3.25rem);
       margin-bottom: 15px;
     }
 
     .cta p {
-      color: #d8d8e8;
-      margin-bottom: 30px;
+      color: var(--soft-white);
+      margin: 0 auto 30px;
+      max-width: 650px;
     }
 
     footer {
-      padding: 25px 8%;
+      padding: 38px 8%;
       text-align: center;
-      color: #aaaabd;
+      color: var(--muted);
       font-size: 0.9rem;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: #050713;
     }
 
-    @media (max-width: 900px) {
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: var(--white);
+      font-weight: bold;
+    }
+
+    .footer-logo img {
+      width: 38px;
+      height: 38px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .footer-links {
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 10px;
+      opacity: 0.8;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: #9fd7ff;
+    }
+
+    .small-print {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: #85859b;
+    }
+
+    @media (max-width: 1150px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cards-three,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 920px) {
       header {
         flex-direction: column;
         gap: 20px;
       }
 
+      .nav-wrap {
+        width: 100%;
+        text-align: center;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
       nav a {
-        margin: 0 10px;
+        margin: 0;
       }
 
       .hero {
@@ -296,117 +684,209 @@
         justify-content: center;
       }
 
-      .cards {
-        grid-template-columns: 1fr;
+      .floating-note {
+        display: none;
       }
     }
 
-    @media (max-width: 500px) {
-      nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
+    @media (max-width: 620px) {
+      header {
+        padding: 20px 5%;
       }
 
-      nav a {
-        margin: 0;
+      .brand h1 {
+        font-size: 1.2rem;
       }
 
-      .about-box {
-        padding: 30px 20px;
+      .hero {
+        padding: 40px 6% 70px;
+      }
+
+      .hero h2 {
+        letter-spacing: -1px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 65px 6%;
+      }
+
+      .about-box,
+      .cta-box {
+        padding: 34px 22px;
+      }
+
+      .marquee span {
+        padding: 16px 22px;
       }
     }
   </style>
 </head>
 
 <body>
+
   <div class="page">
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+    <div class="blob blob-three"></div>
 
     <header>
-      <div class="brand">
+      <a href="index.html" class="brand">
         <img src="IMG_3123.png" alt="UnitedX Agency Logo" />
-        <h1>UnitedX Agency</h1>
-      </div>
+        <div>
+          <h1>UnitedX Agency</h1>
+          <span>Creator Support</span>
+        </div>
+      </a>
 
-      <nav>
-        <a href="#about">About</a>
-        <a href="#support">Support</a>
-        <a href="#join">Join</a>
-      </nav>
+      <div class="nav-wrap">
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="apply.html">Apply</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
     </header>
 
     <main class="hero">
       <div class="hero-content">
-        <span class="tagline">Creator Support • Growth • Guidance</span>
+        <span class="tagline">TikTok LIVE Creator Support • Growth • Guidance</span>
 
-        <h2>UnitedX Agency</h2>
+        <h2>Grow with UnitedX.</h2>
 
         <p>
-          UnitedX Agency is here to support creators who want to grow, build confidence,
-          and develop their presence on TikTok LIVE. We offer simple guidance, creator
-          support, and a welcoming space for people ready to take their content further.
+          UnitedX Agency supports creators who want to build confidence, improve their TikTok LIVE presence,
+          and take their content journey more seriously. Simple guidance, friendly support, and a place to grow.
         </p>
 
         <div class="buttons">
-          <a href="#join" class="btn btn-primary">Apply Today</a>
-          <a href="#support" class="btn btn-secondary">What We Offer</a>
+          <a href="apply.html" class="btn btn-primary">Apply Today</a>
+          <a href="about.html" class="btn btn-secondary">Learn More</a>
         </div>
       </div>
 
-      <div class="hero-logo">
+      <div class="hero-visual">
+        <div class="floating-note note-one">Creator guidance</div>
+        <div class="floating-note note-two">Growth support</div>
+        <div class="floating-note note-three">LIVE confidence</div>
+
         <div class="logo-card">
-          <img src="IMG_3123.png" alt="UnitedX Agency branding" />
+          <img src="IMG_3123.png" alt="UnitedX Agency Branding" />
         </div>
       </div>
     </main>
   </div>
 
-  <section id="about" class="about">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Creator Support</span>
+      <span>Growth Guidance</span>
+      <span>TikTok LIVE Confidence</span>
+      <span>Community Support</span>
+      <span>Content Improvement</span>
+      <span>Creator Support</span>
+      <span>Growth Guidance</span>
+      <span>TikTok LIVE Confidence</span>
+      <span>Community Support</span>
+      <span>Content Improvement</span>
+    </div>
+  </div>
+
+  <section class="about-preview">
     <div class="about-box">
-      <h3>About UnitedX Agency</h3>
+      <h3>Helping creators take their <span class="highlight">next step</span></h3>
       <p>
-        UnitedX Agency is a creator-focused agency designed to help streamers and content
-        creators feel supported while growing their TikTok presence.
+        UnitedX Agency is designed for creators who want basic support while learning how to grow,
+        show up consistently, and feel more comfortable going LIVE.
       </p>
-      <p>
-        Whether you are new to LIVE streaming or looking to improve your consistency,
-        confidence, and content, UnitedX Agency aims to provide friendly guidance and
-        basic creator support along the way.
-      </p>
+
+      <a href="about.html" class="btn btn-primary">Read About Us</a>
     </div>
   </section>
 
-  <section id="support">
+  <section>
     <div class="section-title">
-      <h3>What We Offer</h3>
+      <h3>Explore <span class="highlight">UnitedX Agency</span></h3>
       <p>
-        Simple support for creators who want to grow, improve, and feel more confident on LIVE.
+        Everything you need to find out who we are, how to join, what support is offered,
+        and how to contact the team.
       </p>
     </div>
 
     <div class="cards">
       <div class="card">
-        <h4>Creator Guidance</h4>
+        <div class="icon">✦</div>
+        <h4>About Us</h4>
         <p>
-          Basic advice to help creators understand LIVE streaming, improve their presence,
-          and feel more comfortable showing up online.
+          Learn what UnitedX Agency is, who we support, and how we help creators begin or improve their TikTok LIVE journey.
+        </p>
+        <a href="about.html">Visit About Page →</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">↗</div>
+        <h4>Apply</h4>
+        <p>
+          Ready to join? Head to the application page to see what UnitedX Agency looks for in creators.
+        </p>
+        <a href="apply.html">Go to Apply Page →</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">?</div>
+        <h4>FAQ</h4>
+        <p>
+          Have questions? Our FAQ page covers basic information about joining, support, and expectations.
+        </p>
+        <a href="faq.html">Read FAQs →</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">✉</div>
+        <h4>Contact</h4>
+        <p>
+          Need to speak to the team? Use the contact page to find the best way to reach UnitedX Agency.
+        </p>
+        <a href="contact.html">Contact Us →</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h3>What We <span class="highlight">Offer</span></h3>
+      <p>
+        Simple, creator-focused support for people who want to improve on TikTok LIVE.
+      </p>
+    </div>
+
+    <div class="cards cards-three">
+      <div class="card">
+        <div class="icon">🎥</div>
+        <h4>LIVE Guidance</h4>
+        <p>
+          Support with building confidence, understanding LIVE basics, and becoming more comfortable on stream.
         </p>
       </div>
 
       <div class="card">
+        <div class="icon">📈</div>
         <h4>Growth Support</h4>
         <p>
-          Helpful tips around consistency, content ideas, audience engagement, and building
-          a stronger creator routine.
+          Basic advice around consistency, content ideas, audience engagement, and improving your creator routine.
         </p>
       </div>
 
       <div class="card">
+        <div class="icon">💬</div>
         <h4>Community Support</h4>
         <p>
-          A supportive environment where creators can ask questions, learn, and feel less
-          alone while building their platform.
+          A friendly space where creators can ask questions, learn, and feel supported while building their platform.
         </p>
       </div>
     </div>
@@ -414,53 +894,70 @@
 
   <section>
     <div class="section-title">
-      <h3>Who Can Join?</h3>
+      <h3>Your Creator Journey</h3>
       <p>
-        UnitedX Agency welcomes creators who are interested in developing their TikTok LIVE
-        journey and are open to learning, improving, and staying consistent.
+        A simple path for creators who want to start, improve, and grow with support.
       </p>
     </div>
 
-    <div class="cards">
-      <div class="card">
-        <h4>New Creators</h4>
+    <div class="steps">
+      <div class="step">
+        <h4>Apply</h4>
         <p>
-          Perfect for creators who are just starting out and want basic support with getting
-          comfortable on LIVE.
+          Start by applying to UnitedX Agency and sharing a little about your creator goals.
         </p>
       </div>
 
-      <div class="card">
-        <h4>Growing Streamers</h4>
+      <div class="step">
+        <h4>Get Support</h4>
         <p>
-          For creators who already go LIVE but want to improve their confidence, routine,
-          and engagement.
+          Receive basic guidance to help you understand LIVE streaming and improve your confidence.
         </p>
       </div>
 
-      <div class="card">
-        <h4>Consistent Creators</h4>
+      <div class="step">
+        <h4>Keep Growing</h4>
         <p>
-          For creators who are ready to stay active, keep learning, and take their content
-          more seriously.
+          Stay consistent, keep learning, and continue building your TikTok LIVE presence over time.
         </p>
       </div>
     </div>
   </section>
 
-  <section id="join" class="cta">
-    <h3>Ready to Grow With UnitedX?</h3>
-    <p>
-      Start your creator journey with support, guidance, and a team that wants to see you progress.
-    </p>
+  <section class="cta">
+    <div class="cta-box">
+      <h3>Ready to grow with <span class="highlight">UnitedX?</span></h3>
+      <p>
+        Start your creator journey with support, guidance, and a team that wants to see you progress.
+      </p>
 
-    <!-- Replace the link below with their application form, TikTok, Discord, or contact link -->
-    <a href="https://example.com" class="btn btn-primary">Apply Now</a>
+      <div class="buttons" style="justify-content: center;">
+        <a href="apply.html" class="btn btn-primary">Apply Now</a>
+        <a href="faq.html" class="btn btn-secondary">View FAQs</a>
+      </div>
+    </div>
   </section>
 
   <footer>
+    <div class="footer-logo">
+      <img src="IMG_3123.png" alt="UnitedX Agency Logo" />
+      <span>UnitedX Agency</span>
+    </div>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="apply.html">Apply</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
     <p>© 2026 UnitedX Agency. All rights reserved.</p>
     <p>Independent creator support agency.</p>
+    <p class="small-print">
+      UnitedX Agency is not claiming to be affiliated with TikTok unless officially stated by the agency.
+    </p>
   </footer>
+
 </body>
 </html>
